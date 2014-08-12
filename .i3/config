@@ -154,3 +154,6 @@ bar {
         status_command i3status
         workspace_buttons   yes
 }
+
+new_window 1pixel
+new_float 1pixel

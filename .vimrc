@@ -8,3 +8,8 @@ set mouse=a
 set nu
 
 colorscheme darkbone
+
+let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingBackward = "<s-c-space>"
+let g:SuperTabMappingTabLiteral = "<tab>"
+

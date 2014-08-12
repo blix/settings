@@ -51,6 +51,8 @@ plugins=(git)
 alias vi='vim'
 alias Z='. ~/.zshrc && clear'
 alias viR='vim ~/.Xresources && xrdb -merge ~/.Xresources'
+alias viV='vim ~/.vimrc'
+alias viZ='vim ~/.zshrc && . ~/.zshrc && clear'
 
 source $ZSH/oh-my-zsh.sh
 

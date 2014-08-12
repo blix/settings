@@ -71,4 +71,4 @@ URxvt.url-select.launcher:  /usr/bin/luakit
 URxvt.url-select.underline: true
 URxvt.matcher.button:       1
  
-URxvt.font: xft:Dejavu Sans Mono:italic:pixelsize=12:antialais=true:hinting=true
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=10:antialais=true:hinting=true
