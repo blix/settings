@@ -121,8 +121,8 @@ git_prompt_status() {
   if $(echo "$INDEX" | grep '^## .*diverged' &> /dev/null); then
     STATUS="$ZSH_THEME_GIT_PROMPT_DIVERGED$STATUS"
   fi
-  if [[ -z "$STATUS" ]]; then
-    STATUS="No Git"
+  if [[ -z "$STATUS" && -z "$INDEX" ]]; then
+    STATUS=" NoGit "
   fi
   echo $STATUS
 }
