@@ -6,6 +6,7 @@ set softtabstop=4
 set t_Co=256
 set mouse=a
 set nu
+set nowrap
 
 colorscheme darkbone
 
