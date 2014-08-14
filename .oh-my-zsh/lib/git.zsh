@@ -122,7 +122,7 @@ git_prompt_status() {
     STATUS="$ZSH_THEME_GIT_PROMPT_DIVERGED$STATUS"
   fi
   if [[ -z "$STATUS" && -z "$INDEX" ]]; then
-    STATUS=" NoGit "
+    STATUS=" NoGit"
   fi
   echo $STATUS
 }

@@ -133,7 +133,7 @@ setprompt () {
     # Finally, the prompt.
 
     # display exitcode on the right when >0
-    return_code="%(?..%F{red} %? ✗ %f)"
+    return_code="%(?.%F{green} ✔ %f.%F{red} %? ✗ %f)"
     PROMPT='
 $PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
 $PR_CYAN$PR_ULCORNER$PR_HBAR$PR_GREY(\
@@ -146,7 +146,7 @@ $PR_GREY)$PR_CYAN$PR_HBAR$PR_URCORNER
 $PR_CYAN$PR_LLCORNER$PR_BLUE$PR_HBAR(\
 $PR_GREEN%h%{${reset_color}%}$return_code$PR_BLUE)$PR_HBAR$PR_CYAN>$PR_NO_COLOUR ' 
 
-    RPROMPT='$PR_CYAN$PR_HBAR$PR_BLUE(`git_prompt_info``git_prompt_status`)$PR_CYAN$PR_HBAR$PR_LRCORNER$PR_NO_COLOUR'
+    RPROMPT='$PR_CYAN$PR_HBAR$PR_BLUE(`git_prompt_info``git_prompt_status` )$PR_CYAN$PR_HBAR$PR_LRCORNER$PR_NO_COLOUR'
 
     PS2='$PR_CYAN$PR_HBAR\
 $PR_BLUE$PR_HBAR(\
