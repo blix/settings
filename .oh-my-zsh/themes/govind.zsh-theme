@@ -15,18 +15,20 @@ function theme_precmd {
     local promptsize=${#${(%):-(%n@%m)-()-}}
     local rubyprompt=`rvm_prompt_info || rbenv_prompt_info`
     local rubypromptsize=${#${rubyprompt}}
-    local pwdsize=${#${(%):- %30<...<%~%<<%-}}
+    local pwdsize=${#${(%):-%30<...<%~%<<%}}
     local tdinfo=${#${(%):-(%D\{%H:%M:%S::%m:%d:%y\})--}}
 
     if [[ "$promptsize + $rubypromptsize + $pwdsize + $tdinfo" -gt $TERMWIDTH ]]; then
       ((PR_PWDLEN=$TERMWIDTH - $promptsize))
     else
-      if [[ "($promptsize + $rubypromptsize + $pwdsize + $tdinfo) % 2" -gt 0 ]]; then
-        PR_FILLBAR="\${(l.((($TERMWIDTH - ($promptsize + $rubypromptsize + $pwdsize + $tdinfo))/2)-1)..${PR_HBAR}.)}"
-        PR_PAD=$PR_HBAR
-      else
-        PR_FILLBAR="\${(l.((($TERMWIDTH - ($promptsize + $rubypromptsize + $pwdsize + $tdinfo))/2))..${PR_HBAR}.)}"
+      if [[ "$TERMWIDTH % 2" -gt 0 ]]; then
+        ((pwdsize=$pwdsize - 1))
       fi
+      if [[ "($promptsize + $rubypromptsize + $pwdsize + $tdinfo) % 2" -gt 0 ]]; then
+        ((pwdsize=$pwdsize + 1))
+        PR_PAD=$PR_HBAR
+      fi
+      PR_FILLBAR="\${(l.((($TERMWIDTH - ($promptsize + $rubypromptsize + $pwdsize + $tdinfo))/2)-1)..${PR_HBAR}.)}"
     fi
 
 }
@@ -85,10 +87,10 @@ setprompt () {
 	PR_SHIFT_IN=""
 	PR_SHIFT_OUT=""
 	PR_HBAR="─"
-        PR_ULCORNER="┌"
-        PR_LLCORNER="└"
-        PR_LRCORNER="┘"
-        PR_URCORNER="┐"
+        PR_ULCORNER="╭"
+        PR_LLCORNER="╰"
+        PR_URCORNER="╮"
+        PR_LRCORNER="╯"
     else
         typeset -A altchar
         set -A altchar ${(s..)terminfo[acsc]}
@@ -143,10 +145,10 @@ $PR_GREEN%$PR_PWDLEN %30<...<%~%<<\
 $PR_GREY)`rvm_prompt_info || rbenv_prompt_info`$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_PAD$PR_GREY(\
 $PR_YELLOW%D{%H:%M:%S::%m:%d:%y}\
 $PR_GREY)$PR_CYAN$PR_HBAR$PR_URCORNER
-$PR_CYAN$PR_LLCORNER$PR_BLUE$PR_HBAR(\
-$PR_GREEN%h%{${reset_color}%}$return_code$PR_BLUE)$PR_HBAR$PR_CYAN>$PR_NO_COLOUR ' 
+$PR_CYAN$PR_LLCORNER$PR_HBAR$PR_GREY(\
+$PR_GREEN %h%{${reset_color}%}$return_code$PR_GREY)$PR_HBAR$PR_CYAN>$PR_NO_COLOUR ' 
 
-    RPROMPT='$PR_CYAN$PR_HBAR$PR_BLUE(`git_prompt_info``git_prompt_status` )$PR_CYAN$PR_HBAR$PR_LRCORNER$PR_NO_COLOUR'
+    RPROMPT='$PR_CYAN$PR_HBAR$PR_GREY($PR_BLUE`git_prompt_info``git_prompt_status` $PR_GREY)$PR_CYAN$PR_HBAR$PR_LRCORNER$PR_NO_COLOUR'
 
     PS2='$PR_CYAN$PR_HBAR\
 $PR_BLUE$PR_HBAR(\
