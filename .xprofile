@@ -1,3 +1,3 @@
-compton -bcCGf --no-fading-openclose --sw-opti
-feh --bg-scale Downloads/Dark-Blue-Forest-HD-Wallpaper.jpg
+#compton -bcCGf --no-fading-openclose --sw-opti
+#feh --bg-scale Downloads/Dark-Blue-Forest-HD-Wallpaper.jpg
 VBoxClient-all

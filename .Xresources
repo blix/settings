@@ -1,7 +1,7 @@
 !!  Fonts
 xterm.VT100.renderFont: true
 xterm.VT100.faceName: Dejavu Sans Mono
-xterm.VT100.faceSize: 10
+xterm.VT100.faceSize: 12
  
 xterm*geometry:   87x28
  
@@ -13,7 +13,7 @@ xterm*geometry:   87x28
  
 !!  Zenburn
 xterm*background: #3F3F3F
-xterm*foreground: #D9C2B4
+xterm*foreground: #FFFFFF
  
 !!Darkburn
 !xterm*background: #1A1817
@@ -61,7 +61,7 @@ URxvt.depth: 32
  
 !Zenburn
 URxvt.background: [85]#000000
-URxvt.foreground: #B5927D
+URxvt.foreground: #FFFFFF
  
 URxvt.scrollBar: false
 URxvt.imLocale: pt_en_US.utf8
@@ -71,4 +71,4 @@ URxvt.url-select.launcher:  /usr/bin/luakit
 URxvt.url-select.underline: true
 URxvt.matcher.button:       1
  
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=10:antialais=true:hinting=true
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialais=true:hinting=true
