@@ -1,4 +1,5 @@
 set mouse = true
 set commit-order = topo
+set mouse-scroll = 3
 
 bind status C !git commit -s
